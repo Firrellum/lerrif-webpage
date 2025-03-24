@@ -23,7 +23,6 @@ function connectWebSocket() {
     socket.onmessage = (event) => {
         const onlines = document.getElementById('online-peepo');
         const chatBox = document.getElementById('chatBox');
-        const typingIndicator = document.getElementById('typingIndicator');
         const message = JSON.parse(event.data);
         const currentUser = localStorage.getItem('lerrif-username');
 
@@ -32,46 +31,59 @@ function connectWebSocket() {
                 // Add the user to the set of typing users
                 typingUsers.add(message.username);
 
-                // Update the typing indicator text
+                // Create or update the typing indicator
+                let typingIndicator = document.getElementById('typingIndicator');
+                if (!typingIndicator) {
+                    typingIndicator = document.createElement('div');
+                    typingIndicator.id = 'typingIndicator';
+                    chatBox.appendChild(typingIndicator);
+                }
+
                 const typingText = Array.from(typingUsers).join(', ') + (typingUsers.size === 1 ? ' is typing...' : ' are typing...');
                 typingIndicator.textContent = typingText;
-                typingIndicator.style.display = 'block';
+
+                // Ensure the typing indicator is the last child (below messages)
+                chatBox.appendChild(typingIndicator);
+
+                // Scroll to the bottom to show the typing indicator
+                chatBox.scrollTop = chatBox.scrollHeight;
 
                 // Clear any existing timeout
                 if (typingTimeout) {
                     clearTimeout(typingTimeout);
                 }
 
-                // Set a new timeout to hide the indicator after 3 seconds
                 typingTimeout = setTimeout(() => {
-                    typingUsers.delete(message.username); // Remove the user from the set
+                    typingUsers.delete(message.username); 
                     if (typingUsers.size === 0) {
-                        typingIndicator.style.display = 'none'; // Hide if no users are typing
+                        typingIndicator.remove(); 
                     } else {
-                        // Update the text if other users are still typing
                         const updatedText = Array.from(typingUsers).join(', ') + (typingUsers.size === 1 ? ' is typing...' : ' are typing...');
                         typingIndicator.textContent = updatedText;
+                        chatBox.appendChild(typingIndicator);
+                        chatBox.scrollTop = chatBox.scrollHeight;
                     }
                 }, 3000);
             }
         } else {
             // Handle regular chat messages
             const messageClass = message.username === currentUser ? 'sent' : '';
-            // Get current time in HH:MM format (client-side timestamp)
             const now = new Date();
             const timestamp = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
             chatBox.innerHTML += `<p class="${messageClass}"><strong>${message.username}:</strong> ${message.text} <span class="timestamp">[${timestamp}]</span></p>`;
             onlines.innerHTML = `<p><strong>${message.online}</strong> Online`;
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // When a message is received, assume the sender has stopped typing
             if (message.username !== currentUser) {
                 typingUsers.delete(message.username);
-                if (typingUsers.size === 0) {
-                    typingIndicator.style.display = 'none';
-                } else {
+                const typingIndicator = document.getElementById('typingIndicator');
+                if (typingUsers.size === 0 && typingIndicator) {
+                    typingIndicator.remove(); // Remove the indicator from the DOM
+                } else if (typingIndicator) {
                     const updatedText = Array.from(typingUsers).join(', ') + (typingUsers.size === 1 ? ' is typing...' : ' are typing...');
                     typingIndicator.textContent = updatedText;
+                    chatBox.appendChild(typingIndicator); // Ensure it stays at the bottom
+                    chatBox.scrollTop = chatBox.scrollHeight;
                 }
             }
         }
