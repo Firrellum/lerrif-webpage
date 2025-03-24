@@ -97,6 +97,16 @@
     color: var(--primary-cyan); 
 }
 
+.chat-box p .timestamp {
+    font-size: 0.8em;
+    color: var(--cyan-opacity-50); 
+    margin-left: 5px;
+}
+
+.chat-box p.sent .timestamp {
+    color: var(--magenta-opacity-50); 
+}
+
 .message-form {
     display: flex;
     width: 100%;
