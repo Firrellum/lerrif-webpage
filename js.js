@@ -94,8 +94,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         requestAnimationFrame(animate);
     }
+    setTimeout(animate, 3000);
 
-    animate();
+    const heading = document.getElementById('main-heading');
+    const headingText = 'Firrel Software';
+    let i = 0;
+
+    function typeWriterHeading() {
+        if (i < headingText.length) {
+            heading.textContent += headingText.charAt(i);
+            i++;
+            setTimeout(typeWriterHeading, 125); 
+        } else {
+            showTagline();
+            
+            // animate();
+        }
+    }
+    function showTagline() {
+        const tagline = document.createElement('p');
+        tagline.textContent = 'Where Code Meets Creativity';
+        tagline.className = 'tagline';
+        const taglineContainer = document.getElementById('tagline');
+        if (taglineContainer) {
+            taglineContainer.appendChild(tagline);
+        } 
+    }
+
+    if (heading) {
+        typeWriterHeading();
+    } 
+
+    
 });
 
 const navToggle = document.querySelector('.nav-toggle');

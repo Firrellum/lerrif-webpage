@@ -1,25 +1,3 @@
-:root {
-    --primary-cyan: #00ffff;
-    --primary-magenta: #ff00ff;
-    --dark-bg-start: #0a192f;
-    --dark-bg-end: #040f22;
-    --text-dark: #0a192f;
-    --transparent-cyan: rgba(0, 255, 255, 0.1);
-    --transparent-magenta: rgba(255, 0, 255, 0.1);
-    --transparent-white: rgba(255, 255, 255, 0.1);
-    --cyan-opacity-80: rgba(0, 255, 255, 0.8);
-    --cyan-opacity-50: rgba(0, 255, 255, 0.5);
-    --cyan-opacity-30: rgba(0, 255, 255, 0.3);
-    --cyan-opacity-20: rgba(0, 255, 255, 0.2);
-    --cyan-opacity-05: rgba(0, 255, 255, 0.05);
-    --magenta-opacity-70: rgba(255, 0, 255, 0.7);
-    --magenta-opacity-50: rgba(255, 0, 255, 0.5);
-    --magenta-opacity-40: rgba(255, 0, 255, 0.4);
-    --magenta-opacity-30: rgba(255, 0, 255, 0.3);
-    --magenta-opacity-20: rgba(255, 0, 255, 0.2);
-    --magenta-opacity-05: rgba(255, 0, 255, 0.05);
-}
-
 *::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -49,6 +27,28 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Orbitron', sans-serif;
+}
+
+:root {
+    --primary-cyan: #00ffff;
+    --primary-magenta: #ff00ff;
+    --dark-bg-start: #0a192f;
+    --dark-bg-end: #040f22;
+    --text-dark: #0a192f;
+    --transparent-cyan: rgba(0, 255, 255, 0.1);
+    --transparent-magenta: rgba(255, 0, 255, 0.1);
+    --transparent-white: rgba(255, 255, 255, 0.1);
+    --cyan-opacity-80: rgba(0, 255, 255, 0.8);
+    --cyan-opacity-50: rgba(0, 255, 255, 0.5);
+    --cyan-opacity-30: rgba(0, 255, 255, 0.3);
+    --cyan-opacity-20: rgba(0, 255, 255, 0.2);
+    --cyan-opacity-05: rgba(0, 255, 255, 0.05);
+    --magenta-opacity-70: rgba(255, 0, 255, 0.7);
+    --magenta-opacity-50: rgba(255, 0, 255, 0.5);
+    --magenta-opacity-40: rgba(255, 0, 255, 0.4);
+    --magenta-opacity-30: rgba(255, 0, 255, 0.3);
+    --magenta-opacity-20: rgba(255, 0, 255, 0.2);
+    --magenta-opacity-05: rgba(255, 0, 255, 0.05);
 }
 
 body {
@@ -174,6 +174,58 @@ nav {
     text-align: center;
     text-shadow: 0 0 15px var(--magenta-opacity-50);
     color: var(--primary-magenta);
+}
+
+#main-heading {
+    /* font-size: 2.5em; */
+    color: var(--primary-magenta);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    text-align: center;
+    text-shadow: 0 0 5px var(--magenta-opacity-50), 0 0 10px var(--magenta-opacity-30);
+    margin-bottom: 0;
+}
+
+.tagline {
+    font-size: 1.2em;
+    color: var(--cyan-opacity-80);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    #main-heading {
+        font-size: 2em;
+    }
+    .tagline {
+        font-size: 1em;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    #main-heading {
+        font-size: 1.5em;
+    }
+    .tagline {
+        font-size: 0.9em;
+        margin-top: 5px;
+    }
 }
 
 .github-link {
