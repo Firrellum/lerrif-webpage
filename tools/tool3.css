@@ -1,0 +1,74 @@
+.tool-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tool-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tool-content p {
+    font-size: 1.2em;
+    color: var(--cyan-opacity-80);
+    margin-bottom: 20px;
+}
+
+.tool-interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+textarea {
+    background: var(--transparent-cyan);
+    border: 1px solid var(--cyan-opacity-50);
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--primary-cyan);
+    font-size: 0.9em;
+    width: 100%;
+    max-width: 400px;
+    resize: none;
+    transition: all 0.3s ease;
+}
+
+textarea:focus {
+    border-color: var(--primary-magenta);
+    outline: none;
+    box-shadow: 0 0 5px var(--magenta-opacity-50);
+}
+
+textarea[readonly] {
+    background: var(--transparent-magenta);
+    border-color: var(--magenta-opacity-50);
+    color: var(--primary-magenta);
+}
+
+.case-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.case-buttons button {
+    background: var(--transparent-magenta);
+    border: 1px solid var(--magenta-opacity-50);
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: var(--primary-magenta);
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.case-buttons button:hover {
+    background: var(--transparent-cyan);
+    border-color: var(--cyan-opacity-50);
+    color: var(--primary-cyan);
+}

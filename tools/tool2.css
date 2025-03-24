@@ -1,0 +1,102 @@
+.tool-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tool-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tool-content p {
+    font-size: 1.2em;
+    color: var(--cyan-opacity-80);
+    margin-bottom: 20px;
+}
+
+.tool-interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.color-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary-cyan);
+    font-size: 0.9em;
+    flex: 1;
+}
+
+.input-group input {
+    background: var(--transparent-cyan);
+    border: 1px solid var(--cyan-opacity-50);
+    border-radius: 5px;
+    padding: 5px;
+    color: var(--primary-cyan);
+    font-size: 0.9em;
+    width: 150px;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--primary-magenta);
+    outline: none;
+    box-shadow: 0 0 5px var(--magenta-opacity-50);
+}
+
+#colorPicker {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--cyan-opacity-50);
+    border-radius: 10px;
+    padding: 0;
+    background: none;
+    transition: all 0.3s ease;
+}
+
+#colorPicker:hover {
+    border-color: var(--primary-magenta);
+    box-shadow: 0 0 10px var(--magenta-opacity-50);
+}
+
+.copy-btn {
+    background: var(--transparent-magenta);
+    border: 1px solid var(--magenta-opacity-50);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: var(--primary-magenta);
+    font-size: 0.8em;
+    transition: all 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: var(--transparent-cyan);
+    border-color: var(--cyan-opacity-50);
+    color: var(--primary-cyan);
+}
+
+.status-message {
+    font-size: 0.9em;
+    color: var(--cyan-opacity-80);
+    min-height: 20px;
+}

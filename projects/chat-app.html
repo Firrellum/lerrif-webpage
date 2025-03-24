@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LerrifChat - Firrel Software</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="chat-app.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Firrel Software</div>
+                <div class="nav-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#tools">Tools</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="chat-app" class="section game-section">
+        <div class="container">
+            <h2>LerrifChat</h2>
+            <div class="game-content">
+                <div id="ping">🔴 Connecting...</div>
+                <div class="chat-container">
+                    <!-- Login / Username Entry -->
+                    <div id="login-container" class="login-container">
+                        <p>Enter your name to start chatting</p>
+                        <input type="text" id="usernameInput" placeholder="Enter username" required />
+                        <button id="enterButton">Enter Chat</button>
+                    </div>
+
+                    <!-- Chat Interface -->
+                    <div id="chat-container" class="chat-container" style="display:none;">
+                        <div id="chatBox" class="chat-box"></div>
+                        <form id="messageForm" class="message-form">
+                            <input type="text" id="messageInput" placeholder="Type a message" required />
+                            <button type="submit">Send</button>
+                        </form>
+                        <div id="online-peepo" class="online"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Firrel Software. All rights reserved.</p>
+            <a href="https://github.com/Firrellum" class="github-link" target="_blank">
+                <span class="github-icon"></span>
+            </a>
+        </div>
+    </footer>
+
+    <script type="module" src="chat-app.js"></script>
+</body>
+</html>

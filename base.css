@@ -1,0 +1,328 @@
+:root {
+    --primary-cyan: #00ffff;
+    --primary-magenta: #ff00ff;
+    --dark-bg-start: #0a192f;
+    --dark-bg-end: #040f22;
+    --text-dark: #0a192f;
+    --transparent-cyan: rgba(0, 255, 255, 0.1);
+    --transparent-magenta: rgba(255, 0, 255, 0.1);
+    --transparent-white: rgba(255, 255, 255, 0.1);
+    --cyan-opacity-80: rgba(0, 255, 255, 0.8);
+    --cyan-opacity-50: rgba(0, 255, 255, 0.5);
+    --cyan-opacity-30: rgba(0, 255, 255, 0.3);
+    --cyan-opacity-20: rgba(0, 255, 255, 0.2);
+    --cyan-opacity-05: rgba(0, 255, 255, 0.05);
+    --magenta-opacity-70: rgba(255, 0, 255, 0.7);
+    --magenta-opacity-50: rgba(255, 0, 255, 0.5);
+    --magenta-opacity-40: rgba(255, 0, 255, 0.4);
+    --magenta-opacity-30: rgba(255, 0, 255, 0.3);
+    --magenta-opacity-20: rgba(255, 0, 255, 0.2);
+    --magenta-opacity-05: rgba(255, 0, 255, 0.05);
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, var(--dark-bg-start), var(--dark-bg-end));
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--magenta-opacity-40);
+    border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-magenta);
+}
+
+*::-webkit-scrollbar-button {
+    display: none;
+}
+
+*::-webkit-scrollbar-corner {
+    display: none;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, var(--dark-bg-start), var(--dark-bg-end));
+    color: var(--primary-cyan);
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: url('./assets/cursor_unclicked.png') 0 0, default;
+}
+
+a, .card, button, input[type="color"],input[type="file"]::-webkit-file-upload-button, input[type="file"], .tool-item, .copy-btn, .card, #resetBtn {
+    cursor: url('./assets/cursor_clicked.png') 0 0, pointer;
+}
+
+textarea, input[type="text"], input[type="search"], input:not([type]), [contenteditable] {
+    cursor: url('../assets/cursor_text.png') 16 16, text;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: var(--transparent-magenta);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--magenta-opacity-30);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--primary-magenta);
+    text-shadow: 0 0 10px var(--magenta-opacity-70);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--primary-cyan);
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-magenta);
+    text-shadow: 0 0 10px var(--primary-magenta);
+}
+
+.nav-toggle {
+    display: none; 
+}
+
+.hamburger {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: url('../assets/cursor_clicked.png') 16 16, pointer;
+}
+
+.hamburger span {
+    background: var(--primary-cyan);
+    display: block;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 8px;
+}
+
+.hamburger span:nth-child(3) {
+    top: 16px;
+}
+
+.nav-toggle.active .hamburger span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 8px;
+}
+
+.nav-toggle.active .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active .hamburger span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 8px;
+}
+
+.section {
+    padding: 80px 0;
+    border-top: 1px solid var(--magenta-opacity-20);
+}
+
+.section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-align: center;
+    text-shadow: 0 0 15px var(--magenta-opacity-50);
+    color: var(--primary-magenta);
+}
+
+.github-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 30px;
+    margin: 10px auto 0;
+    border: 1px solid var(--cyan-opacity-50);
+    border-radius: 20px;
+    font-size: 0.9em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.github-link .github-icon {
+    order: 1;
+    width: 30px;
+    height: 30px;
+    background: var(--transparent-magenta);
+    border-right: 1px solid var(--cyan-opacity-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.github-link span {
+    order: 2;
+    flex: 1;
+    text-align: center;
+    background: var(--transparent-cyan);
+    color: var(--primary-cyan);
+    height: 100%;
+    line-height: 28px;
+}
+
+.github-link:hover {
+    border-color: var(--magenta-opacity-50);
+}
+
+.github-link:hover .github-icon {
+    background: var(--transparent-cyan);
+}
+
+.github-link:hover .github-icon svg path {
+    fill: var(--primary-magenta);
+    filter: drop-shadow(0 0 3px var(--primary-magenta));
+}
+
+.github-link:hover span {
+    background: var(--transparent-magenta);
+    color: var(--primary-magenta);
+}
+
+footer {
+    text-align: center;
+    padding: 30px 0;
+    background: var(--transparent-magenta);
+    border-top: 1px solid var(--magenta-opacity-30);
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0; 
+    background: rgba(255, 0, 255, 0.05); 
+    border-top: 1px solid var(--magenta-opacity-20);
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; 
+}
+
+footer p {
+    font-size: 0.8em; 
+    color: var(--cyan-opacity-50); 
+}
+
+footer .github-link {
+    width: 100px; 
+    height: 25px; 
+    margin: 5px auto 0; 
+    border: 1px solid var(--cyan-opacity-30); 
+    border-radius: 15px;
+    font-size: 0.8em; 
+}
+
+footer .github-link .github-icon {
+    width: 25px; 
+    height: 25px;
+    border-right: 1px solid var(--cyan-opacity-30); 
+}
+
+footer .github-link span {
+    line-height: 23px; 
+    background: rgba(0, 255, 255, 0.05); 
+}
+
+footer .github-link:hover {
+    border-color: var(--magenta-opacity-30);
+}
+
+footer .github-link:hover .github-icon {
+    background: rgba(0, 255, 255, 0.1);
+}
+
+footer .github-link:hover span {
+    background: rgba(255, 0, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block; 
+    }
+
+    .nav-links {
+        display: none; 
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--text-dark);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid var(--magenta-opacity-30);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .nav-links.active {
+        display: flex; 
+    }
+
+    .nav-links a {
+        font-size: 1.2em;
+        padding: 10px 0;
+    }
+
+    .section h2 {
+        font-size: 2em;
+    }
+}

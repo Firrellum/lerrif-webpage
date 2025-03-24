@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to PDF Converter | Firrel Software</title>
+    <link rel="icon" href="../assets/F_icon_transparent.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="tool1.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Firrel Software</div>
+                <div class="nav-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#tools">Tools</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="tool1" class="section tool-section">
+        <div class="container">
+            <h2>Image to PDF Converter</h2>
+            <div class="tool-content">
+                <p>Upload an image to convert it to a PDF and download it instantly.</p>
+                <div class="tool-interface">
+                    <input type="file" id="imageInput" accept="image/*" />
+                    <button id="convertBtn" disabled>Convert to PDF</button>
+                    <p id="status" class="status-message"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Firrel Software. All rights reserved.</p>
+            <a href="https://github.com/Firrellum" class="github-link" target="_blank">
+                <span class="github-icon"></span>
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="tool1.js"></script>
+</body>
+</html>

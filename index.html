@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firrellum | Portfolio</title>
+    <link rel="icon" href="./assets/F_icon_transparent.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Firrel Software</div>
+                <div class="nav-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#tools">Tools</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="tron-backdrop"></div>
+        <canvas id="trail-canvas"></canvas>
+        <div class="hero-content">
+            <h1>Firrel Software</h1>
+            <p>Digital playground</p>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Games</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Basil Land</h3>
+                    <p>Resource Gatherer is a simple yet engaging idle clicker game</p>
+                    <a href="https://github.com/Firrellum/basil-land" class="github-link" target="_blank">
+                        <span class="github-icon"></span>
+                        <span>Repo</span>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>SDL 2 Game project (C)</h3>
+                    <p>This is a simple game side project built using SDL2 in C, designed as a learning exercise</p>
+                    <a href="https://github.com/Firrellum/gaem" class="github-link" target="_blank">
+                        <span class="github-icon"></span>
+                        <span>Repo</span>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>Emoticon Pairs Game</h3>
+                    <p>A fun memory game where you match pairs of emoticons</p>
+                    <a href="./projects/pairs-game.html" class="github-link">
+                        <span>Play</span>
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>Snake Game</h3>
+                    <p>A classic Snake game with a sci-fi twist</p>
+                    <a href="projects/snake-game.html" class="github-link">
+                        <span>Play</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="section">
+        <div class="container">
+            <h2>Tools</h2>
+            <div class="tools-gallery">
+                <a href="./tools/tools1.html" class="tool-item">Image to PDF</a>
+                <a href="./tools/tool2.html" class="tool-item">Color Converter</a>
+                <a href="./tools/tool3.html" class="tool-item">Text Case</a>
+                <a href="https://betaboranalyser.netlify.app/" target="_blank" class="tool-item">BoR Analyser</a>
+                <a href="./projects/chat-app.html" target="_blank" class="tool-item">Chat</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Firrel Software.</p>
+            <a href="https://github.com/Firrellum" class="github-link" target="_blank">
+                <span class="github-icon"></span>
+            </a>
+        </div>
+    </footer>
+
+    <script src="js.js"></script>
+</body>
+</html>
