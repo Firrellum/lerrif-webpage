@@ -1,5 +1,5 @@
-// Determine WebSocket protocol based on the current page
-const socketProtocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+// Always use wss:// since Render requires secure WebSocket connections
+const socketProtocol = 'wss';
 
 // Create a WebSocket connection with reconnection logic
 let socket;
@@ -8,6 +8,7 @@ const maxReconnectAttempts = 5;
 const reconnectInterval = 3000; // 3 seconds
 
 function connectWebSocket() {
+    console.log(`Attempting to connect to ${socketProtocol}://lerif-chat.onrender.com`);
     socket = new WebSocket(`${socketProtocol}://lerif-chat.onrender.com`);
 
     socket.onmessage = (event) => {
@@ -21,7 +22,7 @@ function connectWebSocket() {
     };
 
     socket.onerror = (error) => {
-        console.log(`WebSocket Error: ${error}`);
+        console.log('WebSocket Error:', error);
         document.getElementById('ping').textContent = '🔴 Disconnected';
     };
 
@@ -31,8 +32,8 @@ function connectWebSocket() {
         reconnectAttempts = 0; // Reset reconnect attempts on successful connection
     };
 
-    socket.onclose = () => {
-        console.log('WebSocket connection closed');
+    socket.onclose = (event) => {
+        console.log(`WebSocket connection closed. Code: ${event.code}, Reason: ${event.reason}`);
         document.getElementById('ping').textContent = '🔴 Disconnected';
         if (reconnectAttempts < maxReconnectAttempts) {
             setTimeout(() => {
