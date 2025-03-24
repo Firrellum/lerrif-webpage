@@ -23,6 +23,7 @@ function connectWebSocket() {
             if (message.username !== currentUser) {
                 typingIndicator.textContent = `${message.username} is typing...`;
                 typingIndicator.style.display = 'block';
+                // Hide the indicator after 3 seconds
                 setTimeout(() => {
                     typingIndicator.style.display = 'none';
                 }, 3000);
@@ -30,7 +31,7 @@ function connectWebSocket() {
         } else {
             // Handle regular chat messages
             const messageClass = message.username === currentUser ? 'sent' : '';
-            chatBox.innerHTML += `<p class="${messageClass}"><strong>${message.username}:</strong> ${message.text} <span class="timestamp">[${message.timestamp}]</span></p>`;
+            chatBox.innerHTML += `<p class="${messageClass}"><strong>${message.username}:</strong> ${message.text} <span class="timestamp">[${timestamp}]</span></p>`;
             onlines.innerHTML = `<p><strong>${message.online}</strong> Online`;
             chatBox.scrollTop = chatBox.scrollHeight;
         }
