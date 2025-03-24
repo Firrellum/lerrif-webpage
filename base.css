@@ -113,6 +113,7 @@ nav {
 .nav-links a:hover {
     color: var(--primary-magenta);
     text-shadow: 0 0 10px var(--primary-magenta);
+    border-bottom: 1px solid var(--primary-magenta);
 }
 
 .nav-toggle {

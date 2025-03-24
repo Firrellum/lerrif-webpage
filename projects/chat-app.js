@@ -1,11 +1,9 @@
-// Always use wss:// since Render requires secure WebSocket connections
 const socketProtocol = 'wss';
 
-// Create a WebSocket connection with reconnection logic
 let socket;
 let reconnectAttempts = 0;
 const maxReconnectAttempts = 5;
-const reconnectInterval = 3000; // 3 seconds
+const reconnectInterval = 3000; 
 
 function connectWebSocket() {
     console.log(`Attempting to connect to ${socketProtocol}://lerif-chat.onrender.com`);
@@ -29,7 +27,7 @@ function connectWebSocket() {
     socket.onopen = () => {
         console.log('WebSocket connection established');
         document.getElementById('ping').textContent = '🟢 Connected';
-        reconnectAttempts = 0; // Reset reconnect attempts on successful connection
+        reconnectAttempts = 0; 
     };
 
     socket.onclose = (event) => {
@@ -48,11 +46,21 @@ function connectWebSocket() {
     };
 }
 
-// Initial connection
 connectWebSocket();
 
+function keepAlive() {
+    fetch(`https://lerif-chat.onrender.com/ping`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(res => res.json())
+        .then(data => console.log('Keep-alive ping:', data))
+        .catch(err => console.error('Keep-alive error:', err));
+}
+
+setInterval(keepAlive, 1 * 60 * 1000); 
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Navigation
     const navLinks = document.querySelectorAll('.nav-links a');
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -62,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Hamburger menu toggle
     const navToggle = document.querySelector('.nav-toggle');
     const navLinksContainer = document.querySelector('.nav-links');
     navToggle.addEventListener('click', () => {
@@ -70,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinksContainer.classList.toggle('active');
     });
 
-    // GitHub SVG injection
     const githubIcons = document.querySelectorAll('.github-icon');
     const githubSvg = `
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,13 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
         icon.innerHTML = githubSvg;
     });
 
-    // Check local storage for username
     if (localStorage.getItem('lerrif-username')) {
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('chat-container').style.display = 'flex';
     }
 
-    // Event listener for username entry
     document.getElementById('enterButton').addEventListener('click', () => {
         const usernameInput = document.getElementById('usernameInput');
         const username = usernameInput.value.trim();
@@ -101,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Event listener for chat input
     document.getElementById('messageForm').addEventListener('submit', (event) => {
         event.preventDefault();
         const messageInput = document.getElementById('messageInput');
@@ -114,29 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 online: null
             };
 
-            socket.send(JSON.stringify(message));
-            messageInput.value = '';
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify(message));
+                messageInput.value = '';
+            } else {
+                console.log('Cannot send message: WebSocket is not open');
+                alert('Cannot send message: Not connected to the server. Please wait for reconnection or refresh the page.');
+            }
         }
     });
 });
-
-// Function to ping the server
-async function pingServer() {
-    const pingDisplay = document.getElementById('ping');
-    try {
-        const res = await fetch(`https://lerif-chat.onrender.com/ping`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include'
-        });
-        const data = await res.json();
-        console.log('Ping response:', data);
-        pingDisplay.textContent = '🟢 Connected';
-    } catch (error) {
-        console.error('Error pinging server:', error);
-        pingDisplay.textContent = '🔴 Disconnected';
-    }
-}
-
-// Call server ping
-pingServer();
