@@ -107,6 +107,13 @@
     color: var(--magenta-opacity-50); 
 }
 
+#typingIndicator {
+    font-size: 0.9em;
+    color: var(--cyan-opacity-80);
+    padding: 5px;
+    text-align: left;
+}
+
 .message-form {
     display: flex;
     width: 100%;
