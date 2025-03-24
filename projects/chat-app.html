@@ -35,16 +35,15 @@
             <div class="game-content">
                 <div id="ping">🔴 Connecting...</div>
                 <div class="chat-container">
-                    <!-- Login / Username Entry -->
                     <div id="login-container" class="login-container">
                         <p>Enter your name to start chatting</p>
                         <input type="text" id="usernameInput" placeholder="Enter username" required />
                         <button id="enterButton">Enter Chat</button>
                     </div>
-
-                    <!-- Chat Interface -->
                     <div id="chat-container" class="chat-container" style="display:none;">
-                        <div id="chatBox" class="chat-box"></div>
+                        <div id="chatBox" class="chat-box">
+                            <div id="typingIndicator" style="display: none;"></div>
+                        </div>
                         <form id="messageForm" class="message-form">
                             <input type="text" id="messageInput" placeholder="Type a message" required />
                             <button type="submit">Send</button>
@@ -58,7 +57,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 Firrel Software. All rights reserved.</p>
+            <p>© 2025 Firrel Software.</p>
             <a href="https://github.com/Firrellum" class="github-link" target="_blank">
                 <span class="github-icon"></span>
             </a>

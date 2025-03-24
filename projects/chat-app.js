@@ -12,16 +12,28 @@ function connectWebSocket() {
     socket.onmessage = (event) => {
         const onlines = document.getElementById('online-peepo');
         const chatBox = document.getElementById('chatBox');
+        const typingIndicator = document.getElementById('typingIndicator');
         const message = JSON.parse(event.data);
         const currentUser = localStorage.getItem('lerrif-username');
     
         const now = new Date();
         const timestamp = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
     
-        const messageClass = message.username === currentUser ? 'sent' : '';
-        chatBox.innerHTML += `<p class="${messageClass}"><strong>${message.username}:</strong> ${message.text} <span class="timestamp">[${timestamp}]</span></p>`;
-        onlines.innerHTML = `<p><strong>${message.online}</strong> Online`;
-        chatBox.scrollTop = chatBox.scrollHeight;
+        if (message.type === 'typing') {
+            if (message.username !== currentUser) {
+                typingIndicator.textContent = `${message.username} is typing...`;
+                typingIndicator.style.display = 'block';
+                setTimeout(() => {
+                    typingIndicator.style.display = 'none';
+                }, 3000);
+            }
+        } else {
+            // Handle regular chat messages
+            const messageClass = message.username === currentUser ? 'sent' : '';
+            chatBox.innerHTML += `<p class="${messageClass}"><strong>${message.username}:</strong> ${message.text} <span class="timestamp">[${message.timestamp}]</span></p>`;
+            onlines.innerHTML = `<p><strong>${message.online}</strong> Online`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
     };
 
     socket.onerror = (error) => {
@@ -129,6 +141,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Cannot send message: WebSocket is not open');
                 alert('Cannot send message: Not connected to the server. Please wait for reconnection or refresh the page.');
             }
+        }
+    });
+    
+    document.getElementById('messageInput').addEventListener('input', () => {
+        const username = localStorage.getItem('lerrif-username');
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify({
+                type: 'typing',
+                username: username
+            }));
         }
     });
 });
