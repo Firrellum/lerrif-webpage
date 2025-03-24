@@ -97,7 +97,7 @@
     background: var(--magenta-opacity-05);
     padding: 20px;
     border-radius: 15px;
-    border: 1px solid var(--magenta-opacity-30);
+    border: 2px solid var(--magenta-opacity-30);
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -127,7 +127,7 @@
     background: var(--transparent-cyan);
     padding: 6px 12px;
     border-radius: 12px;
-    border: 1px solid var(--cyan-opacity-30);
+    border: 2px solid var(--cyan-opacity-30);
     color: var(--primary-cyan);
     text-decoration: none;
     font-size: 0.9em;

@@ -13,8 +13,13 @@ function connectWebSocket() {
         const onlines = document.getElementById('online-peepo');
         const chatBox = document.getElementById('chatBox');
         const message = JSON.parse(event.data);
-
-        chatBox.innerHTML += `<p><strong>${message.username}:</strong> ${message.text}</p>`;
+        const currentUser = localStorage.getItem('lerrif-username');
+    
+        const now = new Date();
+        const timestamp = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+    
+        const messageClass = message.username === currentUser ? 'sent' : '';
+        chatBox.innerHTML += `<p class="${messageClass}"><strong>${message.username}:</strong> ${message.text} <span class="timestamp">[${timestamp}]</span></p>`;
         onlines.innerHTML = `<p><strong>${message.online}</strong> Online`;
         chatBox.scrollTop = chatBox.scrollHeight;
     };

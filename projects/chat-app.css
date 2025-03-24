@@ -69,10 +69,32 @@
 .chat-box p {
     font-size: 1em;
     color: var(--primary-cyan);
+    text-align: left; 
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: var(--transparent-magenta); 
+    border: 1px solid var(--magenta-opacity-30);
+    border-radius: 10px;
+    display: inline-block;
+    max-width: 70%;
+    align-self: flex-start; 
+    word-wrap: break-word;
+}
+
+.chat-box p.sent {
+    text-align: right; 
+    background: var(--transparent-cyan); 
+    border: 1px solid var(--cyan-opacity-30);
+    align-self: flex-end; 
 }
 
 .chat-box p strong {
     color: var(--primary-magenta);
+    margin-right: 5px;
+}
+
+.chat-box p.sent strong {
+    color: var(--primary-cyan); 
 }
 
 .message-form {

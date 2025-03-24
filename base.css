@@ -80,7 +80,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid var(--magenta-opacity-30);
+    border-bottom: 2px solid var(--magenta-opacity-30);
 }
 
 nav {
@@ -113,7 +113,7 @@ nav {
 .nav-links a:hover {
     color: var(--primary-magenta);
     text-shadow: 0 0 10px var(--primary-magenta);
-    border-bottom: 1px solid var(--primary-magenta);
+    border-bottom: 2px solid var(--primary-magenta);
 }
 
 .nav-toggle {
@@ -165,7 +165,7 @@ nav {
 
 .section {
     padding: 80px 0;
-    border-top: 1px solid var(--magenta-opacity-20);
+    border-top: 2px solid var(--magenta-opacity-20);
 }
 
 .section h2 {
@@ -183,7 +183,7 @@ nav {
     width: 120px;
     height: 30px;
     margin: 10px auto 0;
-    border: 1px solid var(--cyan-opacity-50);
+    border: 2px solid var(--cyan-opacity-50);
     border-radius: 20px;
     font-size: 0.9em;
     text-decoration: none;
@@ -196,7 +196,7 @@ nav {
     width: 30px;
     height: 30px;
     background: var(--transparent-magenta);
-    border-right: 1px solid var(--cyan-opacity-50);
+    border-right: 2px solid var(--cyan-opacity-50);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,7 +208,6 @@ nav {
     text-align: center;
     background: var(--transparent-cyan);
     color: var(--primary-cyan);
-    height: 100%;
     line-height: 28px;
 }
 
@@ -234,7 +233,7 @@ footer {
     text-align: center;
     padding: 30px 0;
     background: var(--transparent-magenta);
-    border-top: 1px solid var(--magenta-opacity-30);
+    border-top: 2px solid var(--magenta-opacity-30);
 }
 
 footer .container {
@@ -248,7 +247,7 @@ footer {
     text-align: center;
     padding: 15px 0; 
     background: rgba(255, 0, 255, 0.05); 
-    border-top: 1px solid var(--magenta-opacity-20);
+    border-top: 2px solid var(--magenta-opacity-20);
 }
 
 footer .container {
@@ -267,7 +266,7 @@ footer .github-link {
     width: 100px; 
     height: 25px; 
     margin: 5px auto 0; 
-    border: 1px solid var(--cyan-opacity-30); 
+    border: 2px solid var(--cyan-opacity-30); 
     border-radius: 15px;
     font-size: 0.8em; 
 }
@@ -275,7 +274,7 @@ footer .github-link {
 footer .github-link .github-icon {
     width: 25px; 
     height: 25px;
-    border-right: 1px solid var(--cyan-opacity-30); 
+    border-right: 2px solid var(--cyan-opacity-30); 
 }
 
 footer .github-link span {
@@ -308,7 +307,7 @@ footer .github-link:hover span {
         width: 100%;
         background: var(--text-dark);
         backdrop-filter: blur(10px);
-        border-top: 1px solid var(--magenta-opacity-30);
+        border-top: 2px solid var(--magenta-opacity-30);
         flex-direction: column;
         align-items: center;
         padding: 20px 0;
