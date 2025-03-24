@@ -9,6 +9,29 @@ function connectWebSocket() {
     console.log(`Attempting to connect to ${socketProtocol}://lerif-chat.onrender.com`);
     socket = new WebSocket(`${socketProtocol}://lerif-chat.onrender.com`);
 
+    
+    let typingTimeout = null;
+    const typingUsers = new Set(); 
+
+    
+    function debounce(func, wait) {
+        let timeout;
+        return function (...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+    }
+
+    document.getElementById('messageInput').addEventListener('input', () => {
+        const username = localStorage.getItem('lerrif-username');
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify({
+                type: 'typing',
+                username: username
+            }));
+        }
+    });
+
     socket.onmessage = (event) => {
         const onlines = document.getElementById('online-peepo');
         const chatBox = document.getElementById('chatBox');
@@ -16,24 +39,47 @@ function connectWebSocket() {
         const message = JSON.parse(event.data);
         const currentUser = localStorage.getItem('lerrif-username');
     
-        const now = new Date();
-        const timestamp = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
-    
         if (message.type === 'typing') {
             if (message.username !== currentUser) {
-                typingIndicator.textContent = `${message.username} is typing...`;
+                typingUsers.add(message.username);
+    
+                const typingText = Array.from(typingUsers).join(', ') + (typingUsers.size === 1 ? ' is typing...' : ' are typing...');
+                typingIndicator.textContent = typingText;
                 typingIndicator.style.display = 'block';
-                // Hide the indicator after 3 seconds
-                setTimeout(() => {
-                    typingIndicator.style.display = 'none';
+    
+                // clear any existing timeout
+                if (typingTimeout) {
+                    clearTimeout(typingTimeout);
+                }
+    
+                typingTimeout = setTimeout(() => {
+                    typingUsers.delete(message.username); 
+                    if (typingUsers.size === 0) {
+                        typingIndicator.style.display = 'none'; 
+                    } else {
+                        const updatedText = Array.from(typingUsers).join(', ') + (typingUsers.size === 1 ? ' is typing...' : ' are typing...');
+                        typingIndicator.textContent = updatedText;
+                    }
                 }, 3000);
             }
         } else {
-            // Handle regular chat messages
             const messageClass = message.username === currentUser ? 'sent' : '';
+           const now = new Date();
+            const timestamp = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
             chatBox.innerHTML += `<p class="${messageClass}"><strong>${message.username}:</strong> ${message.text} <span class="timestamp">[${timestamp}]</span></p>`;
             onlines.innerHTML = `<p><strong>${message.online}</strong> Online`;
             chatBox.scrollTop = chatBox.scrollHeight;
+    
+            
+            if (message.username !== currentUser) {
+                typingUsers.delete(message.username);
+                if (typingUsers.size === 0) {
+                    typingIndicator.style.display = 'none';
+                } else {
+                    const updatedText = Array.from(typingUsers).join(', ') + (typingUsers.size === 1 ? ' is typing...' : ' are typing...');
+                    typingIndicator.textContent = updatedText;
+                }
+            }
         }
     };
 
@@ -145,13 +191,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    document.getElementById('messageInput').addEventListener('input', () => {
-        const username = localStorage.getItem('lerrif-username');
-        if (socket.readyState === WebSocket.OPEN) {
-            socket.send(JSON.stringify({
-                type: 'typing',
-                username: username
-            }));
-        }
-    });
+    
 });
