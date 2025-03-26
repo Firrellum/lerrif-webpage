@@ -164,7 +164,7 @@ nav {
 }
 
 .section {
-    padding: 80px 0;
+    padding: 20px 0;
     border-top: 2px solid var(--magenta-opacity-20);
 }
 
@@ -384,4 +384,9 @@ footer .github-link:hover span {
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+#poke_info{
+    position: relative;
+    top:0px;
+    left:95%;
 }
