@@ -30,10 +30,10 @@ async function getPokeData(id) {
         'Error fetching Pokémon data:'
     );
     if (data && poke) {
-        poke.innerHTML = `<a href="https://www.google.com/search?q=${data.name}" target="_blank"><img style="width:50px; height:50px;" src="${data.sprites.front_default}"/></a>`;
+        poke.innerHTML = `<small>${data.name}</small><a href="https://www.google.com/search?q=${data.name}" target="_blank"><img style="width:50px; height:50px;" src="${data.sprites.front_default}"/></a>`;
     }
     return data;
 }
 const randomId = Math.floor(Math.random() * 1025).toString();
-console.log(randomId);
-Promise.all([getWeatherData(), getPokeData(randomId)]);
+Promise.all([getWeatherData(), setTimeout(getPokeData(randomId), 9000)]);
+// Promise.all([getWeatherData(), getPokeData(randomId)]);

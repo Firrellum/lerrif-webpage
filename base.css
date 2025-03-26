@@ -385,8 +385,10 @@ footer .github-link:hover span {
     justify-content: center;
     align-items: center;
 }
+
 #poke_info{
-    position: relative;
-    top:0px;
-    left:95%;
+    display: flex;
+    z-index: 99;
+    align-items: center;
+    flex-direction: column-reverse;
 }
