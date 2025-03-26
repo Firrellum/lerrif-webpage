@@ -35,5 +35,4 @@ async function getPokeData(id) {
     return data;
 }
 const randomId = Math.floor(Math.random() * 1025).toString();
-Promise.all([getWeatherData(), setTimeout(getPokeData(randomId), 9000)]);
-// Promise.all([getWeatherData(), getPokeData(randomId)]);
+Promise.all([getWeatherData(), getPokeData(randomId)]);
