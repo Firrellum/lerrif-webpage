@@ -30,7 +30,9 @@ async function getPokeData(id) {
         'Error fetching Pokémon data:'
     );
     if (data && poke) {
-        poke.innerHTML = `${data.name}<a href="https://www.google.com/search?q=${data.name}" target="_blank"><img src="${data.sprites.front_default}"/></a>`;
+        let name = data.name;
+        name = name[0].toUpperCase() + + name.slice(1);
+        poke.innerHTML = `${name}<a href="https://www.google.com/search?q=${data.name}" target="_blank"><img src="${data.sprites.front_default}"/></a>`;
     }
     return data;
 }
