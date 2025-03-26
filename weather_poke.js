@@ -31,7 +31,7 @@ async function getPokeData(id) {
     );
     if (data && poke) {
         let name = data.name;
-        name = name[0].toUpperCase() + + name.slice(1);
+        name = name[0].toUpperCase() + name.slice(1);
         poke.innerHTML = `${name}<a href="https://www.google.com/search?q=${data.name}" target="_blank"><img src="${data.sprites.front_default}"/></a>`;
     }
     return data;
