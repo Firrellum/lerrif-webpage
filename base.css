@@ -378,3 +378,10 @@ footer .github-link:hover span {
         font-size: 2em;
     }
 }
+
+#weather_info{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
