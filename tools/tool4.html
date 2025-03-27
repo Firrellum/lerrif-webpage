@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Case Converter | Firrel Software</title>
+    <link rel="icon" href="../assets/F_icon_transparent.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="tool4.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Firrel Software</div>
+                <div class="nav-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="nav-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../index.html#projects">Projects</a>
+                    <a href="../index.html#tools">Tools</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="tool4" class="section tool-section">
+        <section class="section" id="qr-generator">
+            <h2>QR Code Generator</h2>
+            <div class="tool-content">
+                <textarea id="qrInput" placeholder="Enter URL or text to generate QR code..."></textarea>
+                <div class="qr-options">
+                    <label>Size:
+                        <select id="qrSize">
+                            <option value="100">100x100</option>
+                            <option value="200" selected>200x200</option>
+                            <option value="300">300x300</option>
+                            <option value="400">400x400</option>
+                        </select>
+                    </label>
+                    <label>Color:
+                        <input type="color" id="qrColor" value="#00ffff">
+                    </label>
+                </div>
+                <button onclick="generateQR()">Generate QR Code</button>
+            </div>
+            <div class="qr-output">
+                <div id="qrContainer"></div>
+                <a id="downloadLink" style="display: none;">Download QR Code</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Firrel Software. All rights reserved.</p>
+            <a href="https://github.com/Firrellum" class="github-link" target="_blank">
+                <span class="github-icon"></span>
+            </a>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="tool4.js"></script>
+</body>
+</html>

@@ -59,7 +59,13 @@ body {
     cursor: url('./assets/cursor_unclicked.png') 0 0, default;
 }
 
-a, .card, button, input[type="color"],input[type="file"]::-webkit-file-upload-button, input[type="file"], .tool-item, .copy-btn, .card, #resetBtn {
+a, .card, button, input[type="color"],
+input[type="file"]::-webkit-file-upload-button, 
+input[type="file"], .tool-item, .copy-btn, 
+.card, #resetBtn, #qrSize, button,
+select#qrSize option:hover,
+select#qrSize option:focus, label,
+select#qrSize option {
     cursor: url('./assets/cursor_clicked.png') 0 0, pointer;
 }
 
